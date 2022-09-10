@@ -4,7 +4,7 @@ export const LinkContainer = styled.a`
   font-size: 0.75rem;
   color: ${({ theme }) => theme["blue"]};
   font-weight: 700;
-  line-height: "160%";
+  line-height: 160%;
   text-transform: uppercase;
   border-bottom: 1px solid transparent;
   display: flex;
