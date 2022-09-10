@@ -20,6 +20,6 @@ export const TextContainer = styled.p<TTextContainerProps>`
       color: ${colorMapping[color]};
     `;
   }}
-  weight: 400;
-  line-height: "160%";
+  font-weight: 400;
+  line-height: 130%;
 `;

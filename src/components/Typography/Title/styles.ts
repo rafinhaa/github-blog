@@ -13,6 +13,6 @@ export const TitleContainer = styled.h1<TTitleContainerProps>`
   font-size: ${({ size }) => fontMapping[size]};
   color: ${({ theme, color }) =>
     color === "title" ? theme["base-title"] : theme["base-subtitle"]};
-  weight: 700;
-  line-height: "160%";
+  font-weight: 700;
+  line-height: 160%;
 `;
