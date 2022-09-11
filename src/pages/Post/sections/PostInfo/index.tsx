@@ -1,12 +1,23 @@
+import { useNavigate } from "react-router-dom";
+
 import { Info } from "../../../../components/Info";
 import { Typography } from "../../../../components/Typography";
+
 import { PostInfoContainer } from "./styles";
 
+const previousPage = -1;
+
 export const PostInfo = () => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(previousPage);
+  };
+
   return (
     <PostInfoContainer>
       <header>
-        <Typography.Link as="button" type="back">
+        <Typography.Link as="button" type="back" onClick={goBack}>
           voltar
         </Typography.Link>
         <Typography.Link href="#" type="external">

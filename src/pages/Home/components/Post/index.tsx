@@ -3,7 +3,7 @@ import { PostContainer } from "./styles";
 
 export const Post = () => {
   return (
-    <PostContainer>
+    <PostContainer to="/post/1">
       <header>
         <Typography.Title size="m" color="title">
           JavaScript data types and data structures
