@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 const maxLines = (lines: number) => {
@@ -10,7 +11,7 @@ const maxLines = (lines: number) => {
   `;
 };
 
-export const PostContainer = styled.section`
+export const PostContainer = styled(Link)`
   width: 100%;
   padding: 2rem;
   background: ${({ theme }) => theme["base-post"]};
