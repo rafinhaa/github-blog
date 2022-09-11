@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { IType } from "./";
 
-export const LinkContainer = styled.a`
+export const LinkContainer = styled.a<IType>`
   font-size: 0.75rem;
   color: ${({ theme }) => theme["blue"]};
   font-weight: 700;
@@ -10,6 +11,9 @@ export const LinkContainer = styled.a`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border: none;
+  background-color: transparent;
+  flex-direction: ${({ type }) => (type === "back" ? "row-reverse" : "row")};
 
   svg {
     height: 0.75rem;
