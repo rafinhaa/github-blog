@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SearchContainer = styled.section`
   margin-top: 4.5rem;
+  margin-bottom: 3rem;
 
   header {
     width: 100%;
