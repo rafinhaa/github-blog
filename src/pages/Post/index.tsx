@@ -1,3 +1,9 @@
+import { PostInfo } from "./sections/PostInfo";
+
 export const Post = () => {
-  return <h1>Post</h1>;
+  return (
+    <main>
+      <PostInfo />
+    </main>
+  );
 };
