@@ -1,4 +1,5 @@
 import { createContext, FC, useCallback, useEffect, useState } from "react";
+import { number } from "zod";
 import { api } from "../../services/api";
 import {
   IIssues,
@@ -14,6 +15,7 @@ const gitHubRepo = import.meta.env.VITE_GITHUB_REPONAME;
 export const GithubDataContext = createContext<IProfileContextType>({
   profile: {} as IProfile,
   issues: {} as IIssues,
+  totalPosts: 0,
   getProfileInfo: async () => undefined,
   getIssues: async (query: string) => undefined,
 });
@@ -27,6 +29,7 @@ export const GithubDataProvider: FC<ProfileProviderProps> = ({ children }) => {
     return {} as IProfile;
   });
   const [issues, setIssues] = useState<IIssues>({} as IIssues);
+  const totalPosts = issues.total_count > 0 ? issues.total_count : 0;
 
   const getProfileInfo = useCallback(async () => {
     const { data } = await api.get(`/users/${gitHubUser}`);
@@ -41,7 +44,6 @@ export const GithubDataProvider: FC<ProfileProviderProps> = ({ children }) => {
     );
 
     setIssues(data);
-    console.log(data);
   }, []);
 
   useEffect(() => {
@@ -62,6 +64,7 @@ export const GithubDataProvider: FC<ProfileProviderProps> = ({ children }) => {
       value={{
         profile,
         issues,
+        totalPosts,
         getProfileInfo,
         getIssues,
       }}
