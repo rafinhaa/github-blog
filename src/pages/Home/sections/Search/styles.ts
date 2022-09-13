@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SearchContainer = styled.section`
+export const SearchContainer = styled.form`
   margin-top: 4.5rem;
   margin-bottom: 3rem;
 
