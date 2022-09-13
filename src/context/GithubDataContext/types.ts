@@ -28,6 +28,7 @@ export interface IIssues {
 export interface IProfileContextType {
   profile: IProfile;
   issues: IIssues;
+  totalPosts: number;
   getProfileInfo: () => Promise<void>;
   getIssues: (query: string) => Promise<void>;
 }
