@@ -41,7 +41,7 @@ export const PostInfo = ({ post }: TPostInfoProps) => {
       </Typography.Title>
 
       <footer>
-        <Info type="username">{post.user.login}</Info>
+        <Info type="username">{post?.user?.login}</Info>
         <Info type="date">{momentDate(post.created_at)}</Info>
         <Info type="comments">{comments}</Info>
       </footer>
