@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useGithubData } from "../../hooks/useGithubData";
+import { Content } from "./sections/Content";
 import { PostInfo } from "./sections/PostInfo";
 
 export const Post = () => {
@@ -8,5 +9,14 @@ export const Post = () => {
 
   getIssue(id);
 
-  return <main>{issue && <PostInfo post={issue} />}</main>;
+  return (
+    <section>
+      {issue && (
+        <div>
+          <PostInfo post={issue} />
+          <Content content={issue.body} />
+        </div>
+      )}
+    </section>
+  );
 };
