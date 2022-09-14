@@ -2,17 +2,28 @@ import { useNavigate } from "react-router-dom";
 
 import { Info } from "../../../../components/Info";
 import { Typography } from "../../../../components/Typography";
+import { IIssue } from "../../../../context/GithubDataContext/types";
+import { momentDate } from "../../../../ultils/MomentDate";
 
 import { PostInfoContainer } from "./styles";
 
 const previousPage = -1;
 
-export const PostInfo = () => {
+export type TPostInfoProps = {
+  post: IIssue;
+};
+
+export const PostInfo = ({ post }: TPostInfoProps) => {
   const navigate = useNavigate();
 
   const goBack = () => {
     navigate(previousPage);
   };
+
+  const comments =
+    post.comments > 1
+      ? `${post.comments} comentários`
+      : `${post.comments} comentário`;
 
   return (
     <PostInfoContainer>
@@ -20,19 +31,19 @@ export const PostInfo = () => {
         <Typography.Link as="button" type="back" onClick={goBack}>
           voltar
         </Typography.Link>
-        <Typography.Link href="#" type="external">
+        <Typography.Link href={post.html_url} type="external">
           ver no github
         </Typography.Link>
       </header>
 
       <Typography.Title color="title" size="l">
-        JavaScript data types and data structures
+        {post.title}
       </Typography.Title>
 
       <footer>
-        <Info type="username">cameronwll</Info>
-        <Info type="date">Há 1 dia</Info>
-        <Info type="comments">5 comentários</Info>
+        <Info type="username">{post.user.login}</Info>
+        <Info type="date">{momentDate(post.created_at)}</Info>
+        <Info type="comments">{comments}</Info>
       </footer>
     </PostInfoContainer>
   );
