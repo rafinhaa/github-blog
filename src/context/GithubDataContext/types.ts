@@ -34,7 +34,7 @@ export interface IProfileContextType {
   totalPosts: number;
   getProfileInfo: () => Promise<void>;
   getIssues: (query: string) => Promise<void>;
-  getIssue: (id: string | undefined) => void;
+  getIssue: (id: string | undefined) => Promise<void>;
 }
 
 export interface ProfileProviderProps {

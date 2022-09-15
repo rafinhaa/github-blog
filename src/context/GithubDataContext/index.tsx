@@ -20,7 +20,7 @@ export const GithubDataContext = createContext<IProfileContextType>({
   totalPosts: 0,
   getProfileInfo: async () => undefined,
   getIssues: async (query: string) => undefined,
-  getIssue: (id: string | undefined) => undefined,
+  getIssue: async (id: string | undefined) => undefined,
 });
 
 export const GithubDataProvider: FC<ProfileProviderProps> = ({ children }) => {
@@ -50,16 +50,13 @@ export const GithubDataProvider: FC<ProfileProviderProps> = ({ children }) => {
     setIssues(data);
   }, []);
 
-  const getIssue = useCallback(
-    (id: string | undefined) => {
-      if (issues.items.length === 0) return;
-      const number = Number(id);
-      issues.items.filter((issue) => {
-        if (issue.number === number) setIssue(issue);
-      });
-    },
-    [issues]
-  );
+  const getIssue = useCallback(async (id: string | undefined) => {
+    const { data } = await api.get(
+      `/repos/${gitHubUser}/${gitHubRepo}/issues/${id}`
+    );
+
+    setIssue(data);
+  }, []);
 
   useEffect(() => {
     getIssues();
